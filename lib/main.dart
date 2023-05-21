@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Calculator',
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
@@ -25,8 +26,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  int firstnum, secondnum;
-  String texttodisplay = "", res, operatortoperform;
+  late int firstnum, secondnum;
+  late String texttodisplay = "", res, operatortoperform;
   void btnclicked(String btnval){
     if(btnval == "C"){
       firstnum = 0;
@@ -63,9 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget customButton(String btnvalue){
-    return Expanded(child: OutlineButton(
+    return Expanded(child: OutlinedButton(
       onPressed: () => btnclicked(btnvalue),
-      padding: EdgeInsets.all(25.0),
       child: Text(
         "$btnvalue",
         style: TextStyle(
